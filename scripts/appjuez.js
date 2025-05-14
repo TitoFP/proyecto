@@ -16,8 +16,8 @@ $(function(){
     $('button').prop('disabled', true);
 
     $.getJSON('php/obtenerRangos.php', function(datos){
-      $.each(datos.rango,function(i, rango){
-        $('#cargoJuez').append('<option value="' + i + '>' + rango + '</option>');
+      $.each(datos,function(){
+        $('#cargoJuez').append('<option>' + this.rango + '</option>');
       });
     });
   });
