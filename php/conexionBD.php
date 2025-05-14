@@ -6,6 +6,9 @@
   $basededatos = "campeonato";
   $puerto = "23398";
   $conexion = new mysqli($servidor, $usuario, $pass, $basededatos, $puerto);
+  if($conexion->connect_error) {
+    die("Conexión fallida" . $conexion->connect_error);
+  }
   $conexion->query("SET NAMES 'utf8'");
 ?>
 
