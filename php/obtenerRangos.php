@@ -2,7 +2,7 @@
 
 require('conexionBD.php');
 $consulta = 'SELECT DISTINCT rango
-            FROM juez';
+            FROM juez;';
 $salida = array();
 if ($datos = $conexion->query($consulta)) {
     while ($rango = $datos->fetch_object()){
