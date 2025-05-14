@@ -1,8 +1,7 @@
 <?php
 
 require('conexionBD.php');
-$consulta = 'SELECT rango
-            FROM juez;';
+$consulta = 'SELECT * FROM juez;';
 $salida = array();
 if ($datos = $conexion->query($consulta)) {
     while ($rango = $datos->fetch_object()){
