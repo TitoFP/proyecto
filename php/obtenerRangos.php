@@ -10,5 +10,5 @@ if ($datos = $conexion->query($consulta)) {
     $datos->close();
 }
 $conexion->close();
-echo $salida;
+echo json_encode($salida);
 ?>
