@@ -17,6 +17,7 @@ $(function(){
 
     $.getJSON('php/obtenerRangos.php', function(datos){
       $.each(datos,function(){
+        console.log(this.rango);
         $('#cargoJuez').append('<option>' + this.rango + '</option>');
       });
     });
