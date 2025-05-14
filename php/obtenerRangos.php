@@ -1,6 +1,6 @@
 <?php
 
-include('conexionBD.php');
+include('./conexionBD.php');
 $consulta = 'SELECT * FROM juez;';
 $salida = array();
 if ($datos = $conexion->query($consulta)) {
