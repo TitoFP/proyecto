@@ -22,11 +22,14 @@ $(function(){
     //     $('#cargoJuez').append('<option>' + this.rango + '</option>');
     //   });
     // });
+    $('#cargoJuez').val(0);
     $('#cargoJuez').on('change', function() {
-      $.getJSON('php/obtenerJueces.php', {rango: $('#cargoJuez :selected').text()}, function(datos) {
-        $.each(datos, function(){
-          $('#nombreJuez').append('<option>' + this.nombre + ' ' + this.apellido1 + ' ' + this.apellido2 + '</option>');
+      if ($('#cargoJuez :selected').val() != 0) {
+        $.getJSON('php/obtenerJueces.php', {rango: $('#cargoJuez :selected').text()}, function(datos) {
+          $.each(datos, function(){
+            $('#nombreJuez').append('<option>' + this.nombre + ' ' + this.apellido1 + ' ' + this.apellido2 + '</option>');
+          })
         })
-      })
+      }
     })
   });
