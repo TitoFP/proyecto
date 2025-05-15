@@ -25,11 +25,14 @@ $(function(){
     $('#cargoJuez').val(0);
     $('#cargoJuez').on('change', function() {
       if ($('#cargoJuez :selected').val() != 0) {
+        $('#nombreJuez').prop('disabled', false);
         $.getJSON('php/obtenerJueces.php', {rango: $('#cargoJuez :selected').text()}, function(datos) {
           $.each(datos, function(){
             $('#nombreJuez').append('<option>' + this.nombre + ' ' + this.apellido1 + ' ' + this.apellido2 + '</option>');
           })
         })
+      } else {
+        $('#nombreJuez').prop('disabled', true);
       }
     })
   });
