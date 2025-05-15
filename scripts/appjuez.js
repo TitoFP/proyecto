@@ -26,13 +26,17 @@ $(function(){
     $('#cargoJuez').on('change', function() {
       if ($('#cargoJuez :selected').val() != 0) {
         $('#nombreJuez').prop('disabled', false);
-        $.getJSON('php/obtenerJueces.php', {rango: $('#cargoJuez :selected').text()}, function(datos) {
-          $.each(datos, function(){
-            $('#nombreJuez').append('<option>' + this.nombre + ' ' + this.apellido1 + ' ' + this.apellido2 + '</option>');
-          })
+        $.getJSON('php/obtenerJueces.php', {rango: $('#cargoJuez :selected').text()})
+          .done(function(datos) {
+            $.each(datos, function(){
+              $('#nombreJuez').append('<option>' + this.nombre + ' ' + this.apellido1 + ' ' + this.apellido2 + '</option>');
+            })
         })
+          .fail(function(){
+            alert('Error al cargar jueces.');
+          });
       } else {
         $('#nombreJuez').prop('disabled', true);
       }
-    })
+    });
   });
