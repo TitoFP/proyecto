@@ -15,11 +15,18 @@ $(function(){
     $('#nombreJuez').prop('disabled', true);
     $('button').prop('disabled', true);
 
-    $.getJSON('php/obtenerRangos.php', function(datos){
-      console.log(datos);
-      $.each(datos,function(){
-        console.log('Ola2');
-        $('#cargoJuez').append('<option>' + this.rango + '</option>');
-      });
-    });
+    // $.getJSON('php/obtenerRangos.php', function(datos){
+    //   console.log(datos);
+    //   $.each(datos,function(){
+    //     console.log('Ola2');
+    //     $('#cargoJuez').append('<option>' + this.rango + '</option>');
+    //   });
+    // });
+    $('#cargoJuez').on('change', function() {
+      $.getJSON('php/obtenerJueces.php', {rango: $('#cargoJuez :selected').text()}, function(datos) {
+        $.each(datos, function(){
+          $('#nombreJuez').append('<option>' + this.nombre + ' ' + this.apellido1 + ' ' + this.apellido2 + '</option>');
+        })
+      })
+    })
   });
